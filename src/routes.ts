@@ -1,11 +1,12 @@
 import { Application } from "express";
 import healthCheck from "./api/healthCheck";
 import lists from "./api/lists";
+import user from "./api/users";
 
 const routes = (app: Application): void => {
   app.use("/api/healthcheck", healthCheck);
   app.use("/api/favs", lists);
-  // app.use('/api/reviews', review)
+  app.use("/api/user", user);
   // app.use('/api/users', user)
   // auth routes
   // app.use('/auth/local', authLocal)
