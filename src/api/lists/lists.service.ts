@@ -11,6 +11,7 @@ export const getListById = (id: string) => {
     where: {
       id: id,
     },
+    include: { favs: true },
   });
 };
 
@@ -18,11 +19,26 @@ export const createList = (input: any) => {
   return prisma.list.create({
     data: {
       name: input.name,
-      favs: input.favs,
+      favs: {
+        connect: input.favs.map((favId: string) => ({ id: favId })),
+      },
       User: {
         connect: {
           id: input.userId,
         },
+      },
+    },
+  });
+};
+
+export const updateList = (input: any) => {
+  return prisma.list.update({
+    where: {
+      id: input.id,
+    },
+    data: {
+      favs: {
+        connect: input.favs.map((favId: string) => ({ id: favId })),
       },
     },
   });

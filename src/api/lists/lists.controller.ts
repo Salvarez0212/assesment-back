@@ -3,6 +3,7 @@ import {
   getAllLists,
   getListById,
   createList,
+  updateList,
   deleteList,
 } from "./lists.service";
 
@@ -35,9 +36,21 @@ export const createListController = async (req: Request, res: Response) => {
   }
 };
 
+export const updateListController = async (req: Request, res: Response) => {
+  try {
+    const list = await updateList(req.body);
+
+    if (!list)
+      return res.status(404).json({ message: "List of favs not found" });
+    res.status(201).json({ message: "The list was updated", data: list });
+  } catch (error: any) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 export const deleteListController = async (req: Request, res: Response) => {
   try {
-    const { id } = req.body;
+    const { id } = req.params;
     const list = await deleteList(id);
     res.status(200).json({ message: "Fav list deleted", data: list });
   } catch (error: any) {
