@@ -2,8 +2,15 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export const getAllLists = () => {
-  return prisma.list.findMany();
+export const getAllLists = (userId: string) => {
+  console.log(userId);
+
+  return prisma.list.findMany({
+    where: {
+      userId: { equals: userId },
+    },
+    include: { favs: true },
+  });
 };
 
 export const getListById = (id: string) => {

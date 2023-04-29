@@ -6,13 +6,13 @@ import {
   updateListController,
   deleteListController,
 } from "./lists.controller";
-
+import { isAuthenticated } from "../../middlewares/auth";
 const router = Router();
 
-router.get("/", getAllListsController);
-router.get("/:id", getListByIdController);
-router.post("/", createListController);
-router.put("/", updateListController);
-router.delete("/:id", deleteListController);
+router.get("/", isAuthenticated, getAllListsController);
+router.get("/:id", isAuthenticated, getListByIdController);
+router.post("/", isAuthenticated, createListController);
+router.put("/", isAuthenticated, updateListController);
+router.delete("/", isAuthenticated, deleteListController);
 
 export default router;

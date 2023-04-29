@@ -9,7 +9,8 @@ import {
 
 export const getAllListsController = async (req: Request, res: Response) => {
   try {
-    const lists = await getAllLists();
+    const { userId } = req.body;
+    const lists = await getAllLists(userId);
     res.status(200).json({ message: "Lists found", data: lists });
   } catch (error: any) {
     res.status(500).json({ message: error.message });
@@ -50,7 +51,7 @@ export const updateListController = async (req: Request, res: Response) => {
 
 export const deleteListController = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const { id } = req.body;
     const list = await deleteList(id);
     res.status(200).json({ message: "Fav list deleted", data: list });
   } catch (error: any) {
