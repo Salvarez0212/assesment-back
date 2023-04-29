@@ -1,5 +1,5 @@
 # Assesment-back
-This is a RESTful API where you can create an user for make a list of favs, you can get, create, update and delete it. Created usin Node.js, Prisma, postgreSQL and Express
+This is a RESTful API where you can create an user for make a list of favs, you can get, create, update and delete it. Created using Node.js, Prisma, postgreSQL and Express
 
 # Usage
 - `npm install` - For install all dependencies
