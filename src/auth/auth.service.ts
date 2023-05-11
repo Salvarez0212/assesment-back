@@ -9,3 +9,11 @@ export const findUser = (email: string) => {
     },
   });
 };
+export const createUser = (input: any) => {
+  return prisma.user.create({
+    data: {
+      email: input.email,
+      password: input.password,
+    },
+  });
+};

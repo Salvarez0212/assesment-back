@@ -8,7 +8,7 @@ const routes = (app: Application): void => {
   app.use("/api/healthcheck", healthCheck);
   app.use("/api/favs", lists);
   app.use("/api/user", user);
-  app.use("/auth/local/login", authentication);
+  app.use("/auth/local", authentication);
 };
 
 export default routes;
