@@ -24,7 +24,7 @@ export const loginUserController = async (req: Request, res: Response) => {
       throw err;
     }
   } catch (error: any) {
-    res.status(error.status).json({
+    res.status(401).json({
       status: "fail",
       message: error.message,
     });

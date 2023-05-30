@@ -43,7 +43,7 @@ export const updateList = (input: any) => {
     },
     data: {
       favs: {
-        connect: input.favs.map((favId: string) => ({ id: favId })),
+        set: input.favs.map((favId: string) => ({ id: favId })),
       },
     },
   });
